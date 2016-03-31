@@ -11,6 +11,11 @@ or using bundler:
 gem 'we_whisper'
 ```
 
+#### Create whisper
+
+```Ruby
+whisper = WeWhisper::Whisper.new appid, token, encoding_aes_key
+```
 
 #### Decrypt message
 
