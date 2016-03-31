@@ -35,7 +35,6 @@ module WeWhisper
       decode_padding(plain)
     end
 
-    # app_id or corp_id
     def pack(content, app_id)
       random = SecureRandom.hex(8)
       text = content.force_encoding('ASCII-8BIT')
@@ -65,7 +64,7 @@ module WeWhisper
 
     def decode_padding(plain)
       pad = plain.bytes[-1]
-      # no padding
+      # if padding is less than 1 or larger than block size, then set to 0
       pad = 0 if pad < 1 || pad > BLOCK_SIZE
       plain[0...(plain.length - pad)]
     end

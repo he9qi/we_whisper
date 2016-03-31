@@ -35,7 +35,7 @@ module WeWhisper
       # 2. If we need to validate signature, generate one from the encrypted text
       #    and check with the Signature in message
       if options[:assert_signature] && signature = Message.get_signature_from_messge(message)
-        sign = Signature.hexdigest(token, timestamp, nonce, encrypted_text)
+        sign = Signature.sign(token, timestamp, nonce, encrypted_text)
         raise InvalidSignature if sign != signature
       end
 
@@ -55,7 +55,7 @@ module WeWhisper
       encrypt = Base64.strict_encode64(encrypt(pack(message, appid), encoding_aes_key))
 
       # 2. Create signature
-      sign = Signature.hexdigest(token, timestamp, nonce, encrypt)
+      sign = Signature.sign(token, timestamp, nonce, encrypt)
 
       # 3. Construct xml
       Message.to_xml(encrypt, sign, timestamp, nonce)
