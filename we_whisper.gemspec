@@ -4,9 +4,10 @@ Gem::Specification.new do |s|
   s.name        = 'we_whisper'
   s.version     = WeWhisper::VERSION
   s.date        = '2016-03-30'
-  s.summary     = "Wechat Message Encryption Wrapper."
+  s.summary     = "A Ruby Wrapper for Wechat Message Encryption."
   s.description = <<-DESC
-    A Ruby Wrapper for Wechat Message Encryption.
+    Wechat(微信) open platform requires requests/messages to be encrypted. This
+    gem wrapps the encryption.
   DESC
   s.authors     = ["Qi He"]
   s.email       = 'qihe229@gmail.com'
