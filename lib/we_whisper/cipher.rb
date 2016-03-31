@@ -10,7 +10,7 @@ module WeWhisper
     BLOCK_SIZE = 32
     CIPHER = 'AES-256-CBC'.freeze
 
-    def encrypt(plain, encoding_aes_key)
+    def cipher_encrypt(plain, encoding_aes_key)
       cipher = OpenSSL::Cipher.new(CIPHER)
       cipher.encrypt
 
@@ -22,7 +22,7 @@ module WeWhisper
       cipher.update(plain) + cipher.final
     end
 
-    def decrypt(msg, encoding_aes_key)
+    def cipher_decrypt(msg, encoding_aes_key)
       cipher = OpenSSL::Cipher.new(CIPHER)
       cipher.decrypt
 

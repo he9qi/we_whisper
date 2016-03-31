@@ -3,6 +3,7 @@ require 'base64'
 require_relative 'cipher'
 require_relative 'signature'
 require_relative 'message'
+require_relative 'cryptor'
 
 module WeWhisper
   InvalidSignature = Class.new StandardError
@@ -37,7 +38,7 @@ module WeWhisper
 
       # 3. Decode and decrypt the encrypted text
       decrypted_message, decrypted_appid = \
-        unpack(decrypt(Base64.decode64(encrypted_text), encoding_aes_key))
+        Cryptor.decrypt(encrypted_text, encoding_aes_key)
 
       if options[:assert_appid]
         raise AppIdNotMatch if decrypted_appid != appid
@@ -48,7 +49,7 @@ module WeWhisper
 
     def encrypt_message(message, nonce, timestamp)
       # 1. Encrypt and encode the xml message
-      encrypt = Base64.strict_encode64(encrypt(pack(message, appid), encoding_aes_key))
+      encrypt = Cryptor.encrypt(message, appid, encoding_aes_key)
 
       # 2. Create signature
       sign = Signature.sign(token, timestamp, nonce, encrypt)
