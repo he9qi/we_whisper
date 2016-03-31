@@ -18,5 +18,5 @@ Gem::Specification.new do |s|
   s.require_paths = ['lib']
   s.test_files    = Dir.glob('spec/**/*.rb')
 
-  s.add_runtime_dependency "nokogiri", '~> 1.6.7.2'
+  s.add_runtime_dependency "activesupport", '~> 4.2.6'
 end

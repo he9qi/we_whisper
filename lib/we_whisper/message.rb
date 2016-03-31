@@ -1,4 +1,4 @@
-require 'nokogiri'
+require 'active_support/core_ext/hash'
 
 module WeWhisper
 
@@ -19,8 +19,8 @@ module WeWhisper
     def get_value_of_key_in_message(message, key)
       case message.class.name
       when "String"
-        doc = Nokogiri::XML(message)
-        doc.at_xpath("//#{key}").content
+        message_hash = Hash.from_xml(message)
+        message_hash[key] || message_hash["xml"][key]
       when "Hash"
         message[key] || message[key.to_sym]
       else
