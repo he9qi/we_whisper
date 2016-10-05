@@ -8,4 +8,5 @@ group :development, :test do
   gem 'rspec'
   gem 'rspec-core'
   gem 'guard-rspec', require: false
+  gem 'coveralls', require: false
 end
