@@ -91,8 +91,5 @@ DEPENDENCIES
   rspec
   rspec-core
 
-RUBY VERSION
-   ruby 2.0.0p481
-
 BUNDLED WITH
    1.13.1
