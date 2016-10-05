@@ -5,7 +5,4 @@ script: ./bin/rspec
 sudo: false
 
 rvm:
-  - 2.0
-  - 2.1
-  - 2.2
-  - 2.3.1
+  - 2.0.0
